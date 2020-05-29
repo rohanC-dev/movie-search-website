@@ -1,0 +1,17 @@
+<%- include("../partials/header") %>
+
+<form action = "/search" method = "POST">
+    <div class="container" style = "margin-top: 200px">
+        <h1 class="display-2" style ="text-align: center;">Search for a Movie</h1>
+        <div class="input-group input-group-lg mb-3">
+            <input type="text" class="form-control" name = "search" placeholder="Search (i.e., Star Wars)"
+                aria-label="Search (i.e., Star Wars)" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <input class="btn btn-secondary" type="submit" id="button-addon2">
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<%- include("../partials/footer") %>

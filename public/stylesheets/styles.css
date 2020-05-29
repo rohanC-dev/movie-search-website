@@ -1,0 +1,37 @@
+body {
+    background: #ff7e5f;
+    background: -webkit-linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    min-height: 100vh;
+}
+
+.jumbotron{
+    margin-top: 20px;
+    padding-top: 30px;
+    background-size: auto 100%;
+}
+
+.jumbotron.ratings{
+    width: 35%;
+    float: left;
+}
+.jumbotron.plot{
+    width: 95%;
+}
+
+.review-icons{
+    width: 128px;
+    height: 128px;
+    margin: -12px 0;
+}
+
+#tomatoIcon{
+    width: 84px;
+    height: 84px;
+    margin: 22px;
+}
+
+.display-4{
+    text-align: center;
+}
+

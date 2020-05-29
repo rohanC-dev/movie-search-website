@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+
+<div class="container-fluid">
+    <h1 class="display-1">Search "<%= data.search_query %>"</h1>
+    <div class="row" style="display:flex; flex-wrap: wrap;">
+        <% for(var i = 0; i < data.api_data.length; i++){ %>
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12" style="margin: 20px;">
+            <div class="container">
+                <div class="card" style="width: 18rem;">
+                    <img src=" <%= data.api_data[i].Poster %> " class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 style="text-align:center" class="card-title"><%= data.api_data[i].Title %></h5>
+                        <form action="/search/<%= data.api_data[i].imdbID %>" method="GET">
+                            <input type="hidden">
+                            <div class="container">
+                                <button class="btn btn-primary">More Info</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+
+
+<%- include("../partials/footer") %>

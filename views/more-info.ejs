@@ -1,0 +1,193 @@
+<%- include("../partials/header") %>
+
+<div id="mainContainer" class="container">
+    <div id="topJumbotron" class="jumbotron">
+        <script type="text/javascript" src="/scripts/script.js"></script>
+        <img id="moviePoster" src=" <%= data.Poster %> " class="rounded float-left" alt="movie poster">
+        <div class="d-flex justify-content-center">
+            <h1 class="display-4"><%= data.Title %></h1>
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <h6>Type: <%= data.Type %></h6>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h6>Rated: <%= data.Rated %></h6>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h6>Language: <%= data.Language %></h6>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h6>Director: <%= data.Director %></h6>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h6>Released: <%= data.Year %></h6>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h6>Genre: <%= data.Genre %></h6>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h6><strong>Runtime:</strong> <%= data.Runtime %></h6>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="d-flex justify-content-center">
+
+            <a href="https://www.imdb.com/title/<%= data.imdbID %>" class="btn btn-warning btn-lg">Go to IMDb Page</a>
+        </div>
+
+        <script type="text/javascript" src="/scripts/progress-circle.js"></script>
+    </div>
+
+    <div class="jumbotron ratings">
+        <h2 style ="text-align: center;"> Ratings </h2>
+        <br>
+        <% try{ %>
+        <% var imdRating = data.Ratings[0].Value; %>
+        <% imdRating = parseFloat(imdRating)*10; %>
+        <h5 style="margin: 0px; padding-left: 39px;">IMDb</h5>
+        <div>
+            <img src="https://cdn.icon-icons.com/icons2/413/PNG/256/IMDB_41225.png" class="review-icons"
+                style="float: left;">
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="progress mx-auto" data-value="<%= imdRating %>">
+                <span class="progress-left">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold"><%= imdRating %>/100</div>
+                </div>
+            </div>
+        </div>
+
+        <% }catch(err){ %>
+        <h5 style="margin: 0px; padding-left: 39px;">IMDb</h5>
+        <div>
+            <img src="https://cdn.icon-icons.com/icons2/413/PNG/256/IMDB_41225.png" class="review-icons"
+                style="float: left;">
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="progress mx-auto" data-value="NaN">
+                <span class="progress-left">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold">N/A</div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+
+        <% try{ %>
+        <% var rotRating = data.Ratings[1].Value; %>
+        <% rotRating = rotRating.replace("%", ""); %>
+
+        <h5 style="margin: 0px; margin-right: 200px; text-align: center;">Rotten Tomatoes</h5>
+        <div>
+            <img id="tomatoIcon"
+                src="https://res-5.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/kgqvwj63dlxgx79yy1bc"
+                class="rounded review-icons" style="float:left;">
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="progress mx-auto" data-value="<%= rotRating %>">
+                <span class="progress-left">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold"><%= rotRating %>/100</div>
+                </div>
+            </div>
+        </div>
+        <% }catch(err){ %>
+        <h5 style="margin: 0px; margin-right: 200px; text-align: center;">Rotten Tomatoes</h5>
+        <div>
+            <img id="tomatoIcon"
+                src="https://res-5.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/kgqvwj63dlxgx79yy1bc"
+                class="rounded review-icons" style="float:left;">
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="progress mx-auto" data-value="NaN">
+                <span class="progress-left">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold">N/A</div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+        <% try{ %>
+        <% var metaRating = data.Ratings[2].Value; %>
+        <% metaRating = metaRating.replace("/100", ""); %>
+
+        <br>
+        <h5 style="margin: 0px; padding-left: 15px;">Metacritic</h5>
+        <div>
+            <img id="tomatoIcon" src="https://app.truework.com/api/company/20203/logo?fallback=1"
+                class="rounded review-icons" style="float:left;">
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="progress mx-auto" data-value="<%= metaRating %>">
+                <span class="progress-left">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold"><%= metaRating %>/100</div>
+                </div>
+            </div>
+        </div>
+        <% }catch(err){ %>
+        <h5 style="margin: 0px; padding-left: 15px;">Metacritic</h5>
+        <div>
+            <img id="tomatoIcon" src="https://app.truework.com/api/company/20203/logo?fallback=1"
+                class="rounded review-icons" style="float:left;">
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="progress mx-auto" data-value="NaN">
+                <span class="progress-left">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold">N/A</div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+    </div>
+    <div class="d-flex justify-content-end">
+        <div class="jumbotron plot">
+            <h2> Plot Summary </h2>
+            <p>
+                <%=  data.Plot %>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<%- include("../partials/footer") %>
